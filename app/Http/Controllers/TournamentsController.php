@@ -10,6 +10,6 @@ class TournamentsController extends Controller
 
     public function show()
     {
-
+        return view('tournaments.show');
     }
 }
