@@ -24,17 +24,23 @@ class ViewTournamentListingTest extends TestCase
             'title' => 'Tournie 2017',
             'description' => 'A Sample tournament',
             'venue' => 'Sample Venue',
-            'starts_at' => Carbon::parse('14 March, 2017'),
-            'ends_at' =>  Carbon::parse('16 March, 2017'),
+            'starts_at' => Carbon::parse('March 14, 2017 9:00am'),
+            'ends_at' =>  Carbon::parse('March 16, 2017 5:00pm'),
         ]);
+
 
         // Act
         $response = $this->get('/tournaments/' . $tournament->id);
-
+        
 
         // Assert
+        $response->assertStatus(200);
         $response->assertSee('Tournie 2017');
         $response->assertSee('A Sample tournament');
         $response->assertSee('Sample Venue');
+        $response->assertSee('Tuesday 14th March 2017');
+        $response->assertSee('9am');
+        $response->assertSee('Thursday 16th March 2017');
+        $response->assertSee('5pm');
     }
 }
