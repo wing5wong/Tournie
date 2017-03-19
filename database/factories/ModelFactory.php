@@ -22,3 +22,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Tournament::class, function(Faker\Generator $faker){
+    return [
+            'title' => 'Tournie 2017',
+            'description' => 'A Sample tournament',
+            'venue' => 'Sample Venue',
+            'starts_at' => Carbon::parse('March 14, 2017 9:00am'),
+            'ends_at' =>  Carbon::parse('March 16, 2017 5:00pm'),
+        ];
+});
