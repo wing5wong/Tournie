@@ -7,6 +7,9 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+use App\Tournament;
+use Carbon\Carbon;
+
 class ViewTournamentListingTest extends TestCase
 {
 
