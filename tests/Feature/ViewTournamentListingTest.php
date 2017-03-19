@@ -29,12 +29,12 @@ class ViewTournamentListingTest extends TestCase
         ]);
 
         // Act
-        $this->visit('/tournaments/' . $tournament->id);
+        $response = $this->get('/tournaments/' . $tournament->id);
 
 
         // Assert
-        $this->see('Tournie 2017');
-        $this->see('A Sample tournament');
-        $this->see('Sample Venue');
+        $response->assertSee('Tournie 2017');
+        $response->assertSee('A Sample tournament');
+        $response->assertSee('Sample Venue');
     }
 }
