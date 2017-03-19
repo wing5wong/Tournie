@@ -38,9 +38,9 @@ class ViewTournamentListingTest extends TestCase
         $response->assertSee('Tournie 2017');
         $response->assertSee('A Sample tournament');
         $response->assertSee('Sample Venue');
-        $response->assertSee('Tuesday 14th March 2017');
+        $response->assertSee('Tuesday, 14th March 2017');
         $response->assertSee('9am');
-        $response->assertSee('Thursday 16th March 2017');
+        $response->assertSee('Thursday, 16th March 2017');
         $response->assertSee('5pm');
     }
 }
