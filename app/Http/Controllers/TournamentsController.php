@@ -7,4 +7,9 @@ use Illuminate\Http\Request;
 class TournamentsController extends Controller
 {
     //
+
+    public function show()
+    {
+
+    }
 }
