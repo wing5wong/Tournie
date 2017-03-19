@@ -13,6 +13,8 @@ use Carbon\Carbon;
 class ViewTournamentListingTest extends TestCase
 {
 
+    use DatabaseMigrations;
+
     /** @test */
     function user_can_view_a_tournament_listing()
     {
