@@ -14,4 +14,19 @@ class Tournament extends Model
     {
         return $this->starts_at->format('l, jS F Y');
     }
+
+    public function getFormattedStartTimeAttribute($value)
+    {
+        return $this->starts_at->format('ga');
+    }
+
+    public function getFormattedEndDateAttribute($value)
+    {
+        return $this->ends_at->format('l, jS F Y');
+    }
+
+    public function getFormattedEndTimeAttribute($value)
+    {
+        return $this->ends_at->format('ga');
+    }
 }

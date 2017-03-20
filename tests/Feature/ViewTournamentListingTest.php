@@ -20,13 +20,7 @@ class ViewTournamentListingTest extends TestCase
     {
         //Arrange
 
-        $tournament = Tournament::create([
-            'title' => 'Tournie 2017',
-            'description' => 'A Sample tournament',
-            'venue' => 'Sample Venue',
-            'starts_at' => Carbon::parse('March 14, 2017 9:00am'),
-            'ends_at' =>  Carbon::parse('March 16, 2017 5:00pm'),
-        ]);
+        $tournament = factory(Tournament::class)->create();
 
 
         // Act
@@ -35,12 +29,12 @@ class ViewTournamentListingTest extends TestCase
 
         // Assert
         $response->assertStatus(200);
-        $response->assertSee('Tournie 2017');
-        $response->assertSee('A Sample tournament');
-        $response->assertSee('Sample Venue');
-        $response->assertSee('Tuesday, 14th March 2017');
-        $response->assertSee('9am');
-        $response->assertSee('Thursday, 16th March 2017');
-        $response->assertSee('5pm');
+        $response->assertSee($tournament->title);
+        $response->assertSee($tournament->description);
+        $response->assertSee($tournament->venue);
+        $response->assertSee($tournament->formattedStartDate);
+        $response->assertSee($tournament->formattedStartTime);
+        $response->assertSee($tournament->formattedEndDate);
+        $response->assertSee($tournament->formattedEndTime);
     }
 }
