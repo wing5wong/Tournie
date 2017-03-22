@@ -19,7 +19,6 @@ class ViewTournamentListingTest extends TestCase
     function user_can_view_a_tournament_listing()
     {
         //Arrange
-
         $tournament = factory(Tournament::class)->create();
 
 
