@@ -91,4 +91,13 @@ class TournamentTest extends TestCase
 
         $tournament->registerTeam('Test Team','Test Division',15);
     }
+
+    function test_a_registered_team_has_players()
+    {
+        $tournament = factory(Tournament::class)->create();
+
+        $team = $tournament->registerTeam('Test Team','Test Division',10);
+
+        $this->assertCount(10,$team->players);
+    }
 }

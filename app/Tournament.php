@@ -43,6 +43,11 @@ class Tournament extends Model
         }
         $team = new Team(['name'=>$name,'division'=>$division]);
         $this->teams()->save($team);
+
+        for($p=0;$p<$players;$p++) {
+            $team->addPlayer('NAME',0,'Center');
+        }
+
         return $team;
     }
 }

@@ -31,3 +31,11 @@ $factory->define(App\Team::class, function(Faker\Generator $faker){
             'division' => 'Test Division'
         ];
 });
+
+$factory->define(App\Player::class, function(Faker\Generator $faker){
+    return [
+            'name'=>'Test Player',
+            'number' => 23,
+            'position' => 'Center'
+        ];
+});
