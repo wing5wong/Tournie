@@ -24,3 +24,10 @@ $factory->define(App\Tournament::class, function(Faker\Generator $faker){
             'ends_at' =>  Carbon::parse('+2 weeks +2 days'),
         ];
 });
+
+$factory->define(App\Team::class, function(Faker\Generator $faker){
+    return [
+            'name'=>'Test Team',
+            'division' => 'Test Division'
+        ];
+});

@@ -18,13 +18,14 @@ class RegisterTeamTest extends TestCase
     {
         $tournament = factory(Tournament::class)->create();
 
-        $response = $this->post("/tournaments/teams",[
+        $response = $this->post("/tournaments/" . $tournament->id . "/teams",[
             'name'=>'Test Team',
-            'Division' => 'Test Division',
+            'division' => 'Test Division',
             'players' => 8
         ]);
         
         $response->assertStatus(201);
-        // assert team in database
+        $tournament = $tournament->fresh();
+        $this->assertCount(1, $tournament->teams);
     }
 }

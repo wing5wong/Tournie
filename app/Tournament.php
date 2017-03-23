@@ -29,4 +29,16 @@ class Tournament extends Model
     {
         return $this->ends_at->format('ga');
     }
+
+    public function teams()
+    {
+        return $this->hasMany(Team::class);
+    }
+
+    public function registerTeam($name, $division)
+    {
+        $team = new Team(['name'=>$name,'division'=>$division]);
+        $this->teams()->save($team);
+        return $team;
+    }
 }

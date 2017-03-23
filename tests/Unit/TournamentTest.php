@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 use App\Tournament;
+use App\Team;
 use Carbon\Carbon;
 
 class TournamentTest extends TestCase
@@ -59,5 +60,16 @@ class TournamentTest extends TestCase
         $date = $tournament->formattedEndTime;
 
         $this->assertEquals('9am', $tournament->formattedEndTime);
+    }
+
+    /** @test */
+    function a_tournament_can_return_its_teams(){
+        $tournament = factory(Tournament::class)->create();
+        $team = factory(Team::class)->create(['tournament_id'=>$tournament->id]);
+
+        $teams = $tournament->fresh()->teams;
+      
+        $this->assertCount(1, $teams);
+
     }
 }

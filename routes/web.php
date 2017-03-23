@@ -13,4 +13,4 @@
 
 Route::get('/tournaments/{tournament}','TournamentsController@show');
 
-Route::post('/tournaments/teams', 'TournamentTeamsController@store');
+Route::post('/tournaments/{tournament}/teams', 'TournamentTeamsController@store');
