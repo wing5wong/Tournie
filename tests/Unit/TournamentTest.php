@@ -10,6 +10,8 @@ use App\Tournament;
 use App\Team;
 use Carbon\Carbon;
 
+use App\Exceptions\InvalidTeamSize;
+
 class TournamentTest extends TestCase
 {
     use DatabaseMigrations;
@@ -71,5 +73,22 @@ class TournamentTest extends TestCase
       
         $this->assertCount(1, $teams);
 
+    }
+
+
+    function test_cannot_register_a_team_with_under_8_players()
+    {
+        $this->expectException(InvalidTeamSize::class);
+        $tournament = factory(Tournament::class)->create();
+
+        $tournament->registerTeam('Test Team','Test Division',6);
+    }
+
+    function test_cannot_register_a_team_with_over_12_players()
+    {
+        $this->expectException(InvalidTeamSize::class);
+        $tournament = factory(Tournament::class)->create();
+
+        $tournament->registerTeam('Test Team','Test Division',15);
     }
 }

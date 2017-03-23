@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Exceptions\InvalidTeamSize;
 
 class Tournament extends Model
 {
@@ -35,8 +36,11 @@ class Tournament extends Model
         return $this->hasMany(Team::class);
     }
 
-    public function registerTeam($name, $division)
+    public function registerTeam($name, $division, $players)
     {
+        if(8 > $players || 12 < $players ) {
+            throw new InvalidTeamSize;
+        }
         $team = new Team(['name'=>$name,'division'=>$division]);
         $this->teams()->save($team);
         return $team;
